@@ -13,7 +13,7 @@
             <IconTabBar expanded="{device>/isNoPhone}" class="sapUiSmallMarginBottom sapUiResponsiveContentPadding">
                 <items>
                     <IconTabFilter key="Orders" text="Orders">
-                        <smartList:SmartList id="OrdersList" entitySet="Orders" header="Orders" showRowCount="true" showFullScreenButton="true" enableAutoBinding="true" selectFields="OrderID,OrderDate,ShipName,ShipAddress,ShipCity">
+                        <smartList:SmartList id="OrdersList" beforeRebindList="_beforeRebindList" entitySet="Orders" header="Orders" showRowCount="true" showFullScreenButton="true" enableAutoBinding="true" selectFields="OrderID,OrderDate,ShipName,ShipAddress,ShipCity">
                             <smartList:listItemTemplate>
                                 <StandardListItem title="{OrderID}" info="{OrderDate}" description="{ShipName}{ShipAddress}{ShipCity}" />
                             </smartList:listItemTemplate>

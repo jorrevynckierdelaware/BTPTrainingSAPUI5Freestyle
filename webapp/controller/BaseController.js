@@ -2,13 +2,14 @@ sap.ui.define(
     [
         "sap/ui/core/mvc/Controller",
         "sap/ui/core/routing/History",
-        "sap/ui/core/UIComponent"
+        "sap/ui/core/UIComponent",
+        "be/delaware/ztrainingbtp/model/formatter",
     ],
-    function (Controller, History, UIComponent) {
+    function (Controller, History, UIComponent, Formatter) {
         "use strict";
 
-        return Controller.extend("com.milcobel.zcustomerreturns.controller.BaseController", {
-
+        return Controller.extend("be.delaware.ztrainingbtp.controller.BaseController", {
+            formatter: Formatter,
             /**
              * Convenience method for getting the view model by name in every controller of the application.
              * @public

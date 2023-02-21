@@ -21,16 +21,16 @@
                 class="sapUiResponsiveContentPadding"
                 enableAutoColumnWidth="true"
                 editTogglable="false"
-				requestAtLeastFields="CompanyName,CustomerID,ContactName"   
+                requestAtLeastFields="CompanyName,CustomerID,ContactName,Region"
             >
-			<!-- initiallyVisibleFields="CompanyName,CustomerID,ContactName" -->
+                <!-- initiallyVisibleFields="CompanyName,CustomerID,ContactName" -->
                 <smartTable:customToolbar>
                     <OverflowToolbar design="Transparent">
                         <ToolbarSpacer />
                         <OverflowToolbarButton icon="sap-icon://activate" tooltip="OK" press="onOkEvent" />
                     </OverflowToolbar>
                 </smartTable:customToolbar>
-                <Table id="idCustomersTable" inset="false">
+                <Table id="idCustomersTable" inset="false" mode="SingleSelectLeft">
                     <columns>
                         <Column width="20em">
                             <Text text="{i18n>Customer}" />
@@ -38,12 +38,16 @@
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>ContactName}" />
                         </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="{i18n>Region}" />
+                        </Column>
                     </columns>
                     <items>
                         <ColumnListItem vAlign="Middle" type="Navigation" press="onItemPress">
                             <cells>
                                 <ObjectIdentifier title="{CompanyName}" text="{CustomerID}" />
                                 <Text text="{ContactName}" />
+                                <Text text="{ path: 'Region', formatter:'.formatter.formatNull' }" />
                             </cells>
                         </ColumnListItem>
                     </items>

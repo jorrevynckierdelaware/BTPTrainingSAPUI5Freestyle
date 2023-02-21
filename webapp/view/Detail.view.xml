@@ -1,0 +1,26 @@
+<mvc:View controllerName="be.delaware.ztrainingbtp.controller.Detail" xmlns:mvc="sap.ui.core.mvc" xmlns:smartList="sap.ui.comp.smartlist" displayBlock="true" xmlns="sap.m">
+    <Page showHeader="false">
+        <content>
+            <ObjectHeader title="{CustomModel>/oSelectedItem/CompanyName}" backgroundDesign="Solid">
+                <attributes>
+                    <ObjectAttribute title="{i18n>CustomerID}" text="{CustomModel>/oSelectedItem/CustomerID}" />
+                    <ObjectAttribute title="{i18n>ContactName}" text="{CustomModel>/oSelectedItem/ContactName}" />
+                </attributes>
+                <statuses>
+                    <!-- <ObjectStatus title="Status" text="In Stock" state="Success" /> -->
+                </statuses>
+            </ObjectHeader>
+            <IconTabBar expanded="{device>/isNoPhone}" class="sapUiSmallMarginBottom sapUiResponsiveContentPadding">
+                <items>
+                    <IconTabFilter key="Orders" text="Orders">
+                        <smartList:SmartList id="OrdersList" entitySet="Orders" header="Orders" showRowCount="true" showFullScreenButton="true" enableAutoBinding="true" selectFields="OrderID,OrderDate,ShipName,ShipAddress,ShipCity">
+                            <smartList:listItemTemplate>
+                                <StandardListItem title="{OrderID}" info="{OrderDate}" description="{ShipName}{ShipAddress}{ShipCity}" />
+                            </smartList:listItemTemplate>
+                        </smartList:SmartList>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </content>
+    </Page>
+</mvc:View>

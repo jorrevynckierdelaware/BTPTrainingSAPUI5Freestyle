@@ -1,0 +1,54 @@
+<mvc:View controllerName="be.delaware.ztrainingbtp.controller.Master" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:smartTable="sap.ui.comp.smarttable">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="Customers" persistencyKey="SmartTable_BTPTraining" basicSearchFieldName="CompanyName" enableBasicSearch="true">
+                <smartFilterBar:controlConfiguration>
+                    <smartFilterBar:ControlConfiguration key="CompanyName" index="1" label="Custom Filterfield" />
+                    <smartFilterBar:ControlConfiguration key="CustomerID" />
+                </smartFilterBar:controlConfiguration>
+            </smartFilterBar:SmartFilterBar>
+            <smartTable:SmartTable
+                id="LineItemsSmartTable"
+                entitySet="Customers"
+                smartFilterId="smartFilterBar"
+                tableType="ResponsiveTable"
+                useVariantManagement="false"
+                useTablePersonalisation="true"
+                header="{i18n>Customer}"
+                showRowCount="true"
+                persistencyKey="SmartTable_BTPTraining"
+                enableAutoBinding="true"
+                class="sapUiResponsiveContentPadding"
+                enableAutoColumnWidth="true"
+                editTogglable="false"
+				requestAtLeastFields="CompanyName,CustomerID,ContactName"   
+            >
+			<!-- initiallyVisibleFields="CompanyName,CustomerID,ContactName" -->
+                <smartTable:customToolbar>
+                    <OverflowToolbar design="Transparent">
+                        <ToolbarSpacer />
+                        <OverflowToolbarButton icon="sap-icon://activate" tooltip="OK" press="onOkEvent" />
+                    </OverflowToolbar>
+                </smartTable:customToolbar>
+                <Table id="idCustomersTable" inset="false">
+                    <columns>
+                        <Column width="20em">
+                            <Text text="{i18n>Customer}" />
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="{i18n>ContactName}" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem vAlign="Middle" type="Navigation" press="onItemPress">
+                            <cells>
+                                <ObjectIdentifier title="{CompanyName}" text="{CustomerID}" />
+                                <Text text="{ContactName}" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </smartTable:SmartTable>
+        </content>
+    </Page>
+</mvc:View>

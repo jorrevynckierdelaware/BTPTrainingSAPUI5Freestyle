@@ -13,14 +13,15 @@ sap.ui.define([
             },
 
             _onRouteMatched: function (oEvent) {
-                var sCustomerID = oEvent.getParameter("arguments").CustomerID;
+                const sCustomerID = oEvent.getParameter("arguments").CustomerID;
                 this.getModel("CustomModel").setProperty("/CustomerID", sCustomerID);
+                this.byId("OrdersList").rebindList();
             },
 
             _beforeRebindList: function (oEvent) {
                 const sCustomerID = this.getModel("CustomModel").getProperty("/CustomerID");
                 const oBinding = oEvent.getParameter("bindingParams");
-                var oFilter = [new sap.ui.model.Filter("CustomerID", sap.ui.model.FilterOperator.EQ, sCustomerID)];
+                const oFilter = [new sap.ui.model.Filter("CustomerID", sap.ui.model.FilterOperator.EQ, sCustomerID)];
                 oBinding.filters = oFilter;
             }
         });
